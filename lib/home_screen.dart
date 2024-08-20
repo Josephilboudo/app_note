@@ -77,11 +77,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   _titleController.text = "";
                   _descriptionController.text = "";
                   Navigator.of(context).pop();
+                  print("text");
                 },
                 child: Padding(
                   padding: EdgeInsets.all(18),
-                  child:
-                      Text(id == null ? "Ajouter du texte" : "Mettre a jour"),
+                  child: Text(id == null ? "Ajouter" : "Mettre a jour"),
+
                   //style:
                   //TextStyle(fontSize: 18, fontWeight: FontWeight.w500)
                 ),
