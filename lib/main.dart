@@ -1,12 +1,13 @@
+import 'package:app_note/home_screen.dart';
 import 'package:flutter/material.dart';
+import 'creerNote.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(HomeScreen());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -33,11 +34,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+  void _incrementCounter() {}
 
   @override
   Widget build(BuildContext context) {
