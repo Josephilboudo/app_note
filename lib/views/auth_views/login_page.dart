@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../controllers/userdatabase_helper.dart';
 import '../../views/auth_views/signup_page.dart';
-import '../../views/home_page.dart'; // Import de la page Notes
+import '../app_views/home_page.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -30,7 +30,7 @@ class _LoginPageState extends State<LoginPage> {
         ScaffoldMessenger.of(context)
             .showSnackBar(SnackBar(content: Text('Connexion réussie')));
 
-        // Rediriger vers la page des notes après une connexion réussie
+        // Redirection vers la page des notes après une connexion réussie
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
@@ -70,7 +70,7 @@ class _LoginPageState extends State<LoginPage> {
                       color: Colors.grey.withOpacity(0.5),
                       spreadRadius: 5,
                       blurRadius: 7,
-                      offset: Offset(0, 3), // Position de l'ombre
+                      offset: Offset(0, 3),
                     ),
                   ],
                 ),

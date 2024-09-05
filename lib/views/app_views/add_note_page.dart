@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import '../models/note.dart';
-import '../controllers/database_helper.dart';
+import '../../models/note.dart';
+import '../../controllers/database_helper.dart';
 
 class AddNotePage extends StatefulWidget {
   final Note? note;
-  final String username; // Ajout du champ username
+  final String
+      username; // Recuperation du champs username afin d'associe une note a un utilisateur
 
-  // Constructeur modifié pour inclure le champ username
   AddNotePage({this.note, required this.username});
 
   @override
@@ -55,8 +55,8 @@ class _AddNotePageState extends State<AddNotePage> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('Note enregistrée avec succès'),
-          backgroundColor: Colors.green,
-          duration: Duration(seconds: 4),
+          backgroundColor: const Color.fromARGB(255, 5, 70, 7),
+          duration: Duration(seconds: 2),
         ),
       );
       Navigator.pop(context, true);
@@ -73,7 +73,7 @@ class _AddNotePageState extends State<AddNotePage> {
         SnackBar(
           content: Text('Note supprimée avec succès'),
           backgroundColor: Colors.red,
-          duration: Duration(seconds: 4),
+          duration: Duration(seconds: 2),
         ),
       );
 
@@ -89,7 +89,10 @@ class _AddNotePageState extends State<AddNotePage> {
         actions: [
           if (widget.note != null)
             IconButton(
-              icon: Icon(Icons.delete),
+              icon: Icon(
+                Icons.delete,
+                color: Color.fromRGBO(181, 6, 6, 0.988),
+              ),
               onPressed: _deleteNote,
             ),
           IconButton(

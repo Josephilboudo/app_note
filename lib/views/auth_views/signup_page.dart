@@ -1,6 +1,6 @@
+import 'package:app_note/views/app_views/home_page.dart';
 import 'package:flutter/material.dart';
 import '../../controllers/userdatabase_helper.dart';
-import '../../models/user.dart';
 
 class SignUpPage extends StatefulWidget {
   @override
@@ -21,8 +21,11 @@ class _SignUpPageState extends State<SignUpPage> {
         await _dbHelper.registerUser(username, password);
         ScaffoldMessenger.of(context)
             .showSnackBar(SnackBar(content: Text('Inscription réussie')));
-        Navigator.pop(
-            context); // Retourne à la page de connexion après l'inscription
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+              builder: (context) => NotesPage(username: username)),
+        ); // Redirection vers la page des notes après l'inscription
       } catch (e) {
         ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text('Erreur : Nom d\'utilisateur déjà pris')));
@@ -57,7 +60,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       color: Colors.grey.withOpacity(0.5),
                       spreadRadius: 5,
                       blurRadius: 7,
-                      offset: Offset(0, 3), // Position de l'ombre
+                      offset: Offset(0, 3),
                     ),
                   ],
                 ),

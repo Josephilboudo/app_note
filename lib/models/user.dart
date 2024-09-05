@@ -1,3 +1,4 @@
+// Creation de la classe utilisateur
 class User {
   final int? id;
   final String email;

@@ -1,16 +1,17 @@
+//creation de la classe note
 class Note {
   int? id;
   String title;
   String content;
   DateTime date;
-  String username; // Nouveau champ pour lier une note à un utilisateur
+  String username; // Pour lier une note à un utilisateur
 
   Note({
     this.id,
     required this.title,
     required this.content,
     required this.date,
-    required this.username, // Initialisation du champ username
+    required this.username,
   });
 
   // Convertir un objet Note en Map
@@ -20,7 +21,7 @@ class Note {
       'title': title,
       'content': content,
       'date': date.toIso8601String(),
-      'username': username, // Ajout du champ username
+      'username': username,
     };
   }
 
@@ -31,7 +32,7 @@ class Note {
       title: map['title'],
       content: map['content'],
       date: DateTime.parse(map['date']),
-      username: map['username'], // Ajout du champ username
+      username: map['username'],
     );
   }
 }

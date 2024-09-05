@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import '../controllers/database_helper.dart';
-import '../models/note.dart';
+import '../../controllers/database_helper.dart';
+import '../../models/note.dart';
 import 'add_note_page.dart';
-import '../views/auth_views/login_page.dart'; // Import de la page d'authentification
-import 'package:intl/intl.dart'; // Import pour le formatage des dates
+import '../auth_views/login_page.dart';
+import 'package:intl/intl.dart';
 
 class NotesPage extends StatefulWidget {
-  final String username; // Nom d'utilisateur passé en paramètre
+  final String
+      username; // Nom d'utilisateur passé en paramètre apres l'authentification pour savoir qui est connecter
 
   NotesPage({required this.username});
 
@@ -20,6 +21,7 @@ class _NotesPageState extends State<NotesPage> {
   List<Note> _filteredNotes = [];
   TextEditingController _searchController = TextEditingController();
 
+  //Ceci concerne le filtrage de la zone de recherche
   @override
   void initState() {
     super.initState();
