@@ -1,9 +1,7 @@
 //Ceci est le code premier du projet app_note c'est a dire le point d'entree
 
 //Importation des bibliotheques
-import 'dart:io';
 import 'package:app_note/views/auth_views/login_page.dart';
-import 'views/app_views/home_page.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 

@@ -11,14 +11,18 @@ class _SignUpPageState extends State<SignUpPage> {
   final UserDatabaseHelper _dbHelper = UserDatabaseHelper();
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _nomController = TextEditingController();
+  final TextEditingController _prenomController = TextEditingController();
 
   void _register() async {
     final username = _usernameController.text.trim();
     final password = _passwordController.text.trim();
+    final nom = _nomController.text.trim();
+    final prenom = _nomController.text.trim();
 
     if (username.isNotEmpty && password.isNotEmpty) {
       try {
-        await _dbHelper.registerUser(username, password);
+        await _dbHelper.registerUser(nom, prenom, username, password);
         ScaffoldMessenger.of(context)
             .showSnackBar(SnackBar(content: Text('Inscription réussie')));
         Navigator.pushReplacement(
@@ -67,9 +71,27 @@ class _SignUpPageState extends State<SignUpPage> {
               ),
               // Champs de texte pour l'inscription
               TextField(
+                controller: _nomController,
+                decoration: InputDecoration(
+                  labelText: 'Nom',
+                  border: OutlineInputBorder(),
+                ),
+                keyboardType: TextInputType.text,
+              ),
+              SizedBox(height: 16),
+              TextField(
+                controller: _prenomController,
+                decoration: InputDecoration(
+                  labelText: 'Prenom',
+                  border: OutlineInputBorder(),
+                ),
+                keyboardType: TextInputType.text,
+              ),
+              SizedBox(height: 16),
+              TextField(
                 controller: _usernameController,
                 decoration: InputDecoration(
-                  labelText: 'Nom d\'utilisateur',
+                  labelText: 'Email',
                   border: OutlineInputBorder(),
                 ),
                 keyboardType: TextInputType.text,

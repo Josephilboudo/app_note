@@ -4,6 +4,7 @@ import '../../models/note.dart';
 import 'add_note_page.dart';
 import '../auth_views/login_page.dart';
 import 'package:intl/intl.dart';
+import 'userInfo.dart';
 
 class NotesPage extends StatefulWidget {
   final String
@@ -75,6 +76,16 @@ class _NotesPageState extends State<NotesPage> {
     );
   }
 
+  // Fonction pour déconnecter l'utilisateur
+  void _goToUserInfoPage() {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+          builder: (context) => UserInfoPage(
+              username: widget.username)), // Rediriger vers la page de login
+    );
+  }
+
   // Fonction pour afficher un aperçu du contenu de la note
   String _getPreviewText(String content) {
     List<String> words = content.split(' ');
@@ -95,15 +106,17 @@ class _NotesPageState extends State<NotesPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: const Color.fromARGB(255, 145, 151, 227),
         title: Text('Notes'),
         actions: [
           Row(
             children: [
-              Padding(
-                padding: const EdgeInsets.only(right: 16.0),
-                child: Text(widget.username,
-                    style: TextStyle(
-                        color: const Color.fromARGB(255, 28, 16, 196))),
+              IconButton(
+                icon: Icon(Icons.account_circle,
+                    color: Color.fromRGBO(255, 255, 255,
+                        0.984)), // Icône pour accéder aux informations de l'utilisateur
+                onPressed:
+                    _goToUserInfoPage, // Appelle la fonction pour naviguer vers la page des infos utilisateur
               ),
               IconButton(
                 icon: Icon(Icons.logout), // Icône de déconnexion

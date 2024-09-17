@@ -24,17 +24,32 @@ class UserDatabaseHelper {
           CREATE TABLE users(
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             username TEXT UNIQUE,
-            password TEXT
+            password TEXT,
+            nom TEXT,
+            prenom TEXT
           )
         ''');
       },
     );
   }
 
-  Future<int> registerUser(String username, String password) async {
+  Future<int> registerUser(
+      String nom, String prenom, String username, String password) async {
     final db = await database;
-    return await db
-        .insert('users', {'username': username, 'password': password});
+    return await db.insert('users', {
+      'nom': nom,
+      'prenom': prenom,
+      'username': username,
+      'password': password
+    });
+  }
+
+  // Méthode pour obtenir les informations utilisateur par username
+  Future<Map<String, dynamic>?> getUserInfo(String username) async {
+    final db = await database;
+    final result =
+        await db.query('users', where: 'username = ?', whereArgs: [username]);
+    return result.isNotEmpty ? result.first : null;
   }
 
   Future<Map<String, dynamic>?> loginUser(

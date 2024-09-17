@@ -85,6 +85,7 @@ class _AddNotePageState extends State<AddNotePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: const Color.fromARGB(255, 145, 151, 227),
         title: Text(widget.note == null ? 'Ajouter une Note' : 'Détail Note'),
         actions: [
           if (widget.note != null)
